@@ -10,4 +10,8 @@ lit*/
 *.html
 *.doc*
 *.xlsx
+
+# System files
 .DS_Store
+
+
