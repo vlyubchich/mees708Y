@@ -10,3 +10,4 @@ lit*/
 *.html
 *.doc*
 *.xlsx
+.DS_Store
