@@ -5,12 +5,14 @@
 
 data*/
 lit*/
+*_sub/
 
 # Outputs
 *.pdf
 *.html
 *.doc*
 *.xlsx
+*.zip
 
 # System files
 .DS_Store

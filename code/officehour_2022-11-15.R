@@ -2,9 +2,11 @@ EuStockMarkets
 
 myfun <- function(x){
     means <<- apply(x, 1, mean, na.rm = TRUE)
-    browser()
+    stop("error message")
+    # browser()
     q1 = apply(x, 1, quantile, na.rm = TRUE, probs = 0.25)
     return(data.frame(Means = means, Q1 = q1))
+
 }
 
 myfun(swiss)
