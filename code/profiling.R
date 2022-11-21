@@ -26,29 +26,27 @@ summaryRprof(tmp)
 
 
 
-## Profile funtimes::ccf_boot() ----
+## Profile funtimes::causality_pred() ----
 library(funtimes)
 
 # Example data to run the function on
-?ccf_boot
-# Simulate independent normal time series of same lengths
-n = 500
-x <- rnorm(n)
-y <- rnorm(n)
-# tmp <- ccf_boot(x, y) # CCF with bootstrap
+?funtimes::causality_pred
+Canada <- vars::Canada
 
 # For relatively fast functions, repeat calculations nrep times.
 # In this case, we can also slow down the function using a
-# higher number of bootstraps or higher length of the time series n.
+# higher number of bootstraps or longer time series.
 
 # See the time it takes
 system.time(
-    ccf_boot(x, y, B = 5000L)
+    causality_pred(Canada[,1:2], cause = "e",
+                   lag.max = 5, p.free = TRUE, B = 1000L)
 )
 
 # See the time each step takes
 Rprof(tmp <- tempfile())
-ccf_boot(x, y, B = 5000L)
+causality_pred(Canada[,1:2], cause = "e",
+               lag.max = 5, p.free = TRUE, B = 1000L)
 Rprof(NULL)
 summaryRprof(tmp)
 
@@ -56,19 +54,19 @@ summaryRprof(tmp)
 # profvis ----
 # See https://rstudio.github.io/profvis/
 library(profvis)
-profvis(ccf_boot(x, y, B = 5000L))
+profvis(causality_pred(Canada[,1:2], cause = "e",
+                       lag.max = 5, p.free = TRUE, B = 1000L))
 # In the flame graph, the horizontal direction represents time in milliseconds,
 # and the vertical direction represents the call stack.
 
 
 # parallel ----
-library(parallel)
 
 # E.g., optional parallel computing is allowed in the function below
 # (see the argument cl)
-funtimes::causality_pred
+?funtimes::causality_pred
 
-# For our CCF, we can write
+# Typical decisions
 # A) parallel bootstraps (if need to compute fast for 1 big time series or large B)
 # or
 # B) parallelize the whole function (if need to compute fast for many time series).
@@ -97,6 +95,14 @@ system.time(
         mean(x) / sd(x)
     })
 )
+
+# See the time it takes
+system.time(
+    causality_pred(Canada[,1:2], cause = "e",
+                   lag.max = 5, p.free = TRUE, B = 1000L, cl = cl)
+)
+
+
 stopCluster(cl)
 
 
