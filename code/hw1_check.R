@@ -6,7 +6,7 @@ library(ggplot2)
 # source("myplot_StudentName.R")
 
 # Dataset for the source figure
-ad <- read.csv("AD_cluster_3.csv")
+ad <- read.csv("./dataraw/AD_cluster_3.csv")
 rownames(ad) <- ad[, 1]
 ad <- ad[, -1]
 
