@@ -4,6 +4,8 @@ library(dplyr)
 library(ggplot2)
 
 # source("myplot_StudentName.R")
+# source("G:/My Drive/Teaching/MEES708XY/2022 files/mees708Y/code/hw1_ex1.R")
+source("G:/My Drive/Teaching/MEES708XY/2022 files/mees708Y/code/hw1_ex2.R")
 
 # Dataset for the source figure
 ad <- read.csv("./dataraw/AD_cluster_3.csv")
@@ -24,13 +26,13 @@ ts03 <- ad[, 1, drop = FALSE]
 
 # Check the function
 ## 60 points: Should work in each case
-myplot(ad)
+myplot(ad) + ggtitle("Cluster 3")
 myplot(EuStockMarkets)
 myplot(ad_na)
 
 ## 25 points: Consider changing the color and add/remove the line for the average
 ## (the arguments plotmean and color can be named differently by the student)
-myplot(ad, plotmean = FALSE, col  = "red")
+myplot(ad, plotmean = TRUE)
 
 ## 15 points: Should not work (give an informative error in each case)
 myplot(ts01)
