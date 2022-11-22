@@ -50,6 +50,8 @@ causality_pred(Canada[,1:2], cause = "e",
 Rprof(NULL)
 summaryRprof(tmp)
 
+d = summaryRprof(tmp)
+d$by.total[order(d$by.total$self.pct), ]
 
 # profvis ----
 # See https://rstudio.github.io/profvis/
@@ -101,7 +103,6 @@ system.time(
     causality_pred(Canada[,1:2], cause = "e",
                    lag.max = 5, p.free = TRUE, B = 1000L, cl = cl)
 )
-
 
 stopCluster(cl)
 
