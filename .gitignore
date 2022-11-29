@@ -13,6 +13,7 @@ lit*/
 *.doc*
 *.xlsx
 *.zip
+*_files/
 
 # System files
 .DS_Store
