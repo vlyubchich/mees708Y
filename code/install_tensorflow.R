@@ -3,4 +3,5 @@ install.packages("tensorflow")
 library(keras)
 library(tensorflow)
 tensorflow::install_tensorflow(version = "2.7")
+# tensorflow::install_tensorflow(version = "2.7", force=TRUE, update=FALSE)
 # When asked to install Miniconda, type Y in the Console and press Enter.
